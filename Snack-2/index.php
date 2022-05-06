@@ -10,6 +10,10 @@
   function isValidMail($mail) {
     return (strpos($mail, "@") !== false && strpos($mail, ".") !== false);
   }
+
+  $name = ( !empty($_GET['name']) ) ? $_GET['name'] : '';
+  $mail = ( !empty($_GET['mail']) ) ? $_GET['mail'] : '';
+  $age = ( !empty($_GET['age']) ) ? $_GET['age'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +25,25 @@
   <title>Snack 2</title>
 </head>
 <body>
+  <form method="GET">
+    <div>
+      <label for="">Name</label>
+      <input type="text" name="name">
+    </div>
+    <div>
+      <label for="">Email</label>
+      <input type="text" name="mail">
+    </div>
+    <div>
+      <label for="">Age</label>
+      <input type="text" name="age">
+    </div>
+    <div>
+      <input type="submit">
+    </div>
+  </form>
   <?php
-    if ( strlen($_GET['name']) > 3 && isValidMail($_GET['mail']) && is_numeric($_GET['age']) ) {
+    if ( strlen($name) > 3 && isValidMail($mail) && is_numeric($age) ) {
       echo "<p>Accesso riuscito</p>";
     } else {
       echo "<p>Accesso negato</p>";
